@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:mvc="http://www.springframework.org/schema/mvc"
+       xmlns:context="http://www.springframework.org/schema/context"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd http://www.springframework.org/schema/mvc http://www.springframework.org/schema/mvc/spring-mvc.xsd http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context.xsd">
+    <!--1. 配置处理器和适配器-->
+    <mvc:annotation-driven/>
+
+    <!--2 将自定义处理器交给spring管理: 扫描包-->
+    <context:component-scan base-package="com.lenovo.tips.controller"/>
+
+    <!--3 配置视图解析器-->
+    <bean class="org.springframework.web.servlet.view.InternalResourceViewResolver">
+        <!--前缀-->
+        <property name="prefix" value="/page/"/>
+        <!--后缀-->
+        <property name="suffix" value=".html"/>
+    </bean>
+
+    <!--4 通知springmvc对样式文件和js文件等放行-->
+    <mvc:default-servlet-handler/>
+</beans>

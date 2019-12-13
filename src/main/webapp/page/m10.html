@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>m8</title>
+    <!-- Bootstrap -->
+    <link href="/css/bootstrap.min.css" rel="stylesheet" type="text/css">
+    <script src="/js/jquery-1.11.3.min.js" type="text/javascript"></script>
+    <script src="/js/bootstrap.min.js" type="text/javascript"></script>
+
+    <script>
+        // 在页面 加载成功之后  发起ajax 请求
+        $(function(){
+            //发送请求
+            $.ajax({
+                type: "post",
+                url: "/user/findUserByName",
+                data: {username:'m10'},
+                dataType: "json",
+                success: function(data){
+                    var html = '';
+                    html += ' <td >' + data.id+'</td>'
+                    html += ' <td >' + data.userName+'</td>'
+                    html += ' <td >' + data.name+'</td>'
+                    html += ' <td >' + data.age+'</td>'
+                    $("#utr").append(html);  //通过append填充进去
+
+                }
+            });
+
+        })
+    </script>
+</head>
+<body>
+<!-- 来一个页面容器   两边留白-->
+<div class="container">
+    <!--数据列表-->
+    <table id="dataList" class="table table-bordered table-striped table-hover dataTable">
+        <thead>
+        <tr>
+            <th class="sorting_asc">ID</th>
+            <th class="sorting">userName</th>
+            <th class="sorting">name</th>
+            <th class="sorting">age</th>
+        </tr>
+        </thead>
+        <tbody id="utbody">
+        <tr id="utr">
+
+        </tr>
+        </tbody>
+    </table>
+
+
+
+    <div id="carousel-example-generic" class="carousel slide" data-ride="carousel" style="margin-top:-10px ;">
+        <!-- Indicators -->
+        <ol class="carousel-indicators">
+            <li data-target="#carousel-example-generic" data-slide-to="0" class="active"></li>
+            <li data-target="#carousel-example-generic" data-slide-to="1"></li>
+            <li data-target="#carousel-example-generic" data-slide-to="2"></li>
+        </ol>
+
+        <!-- Wrapper for slides -->
+        <div class="carousel-inner" role="listbox">
+            <div class="item active">
+                <img src="/img/1.jpg" alt="...">
+                <div class="carousel-caption">
+                </div>
+            </div>
+            <div class="item">
+                <img src="/img/2.jpg" alt="...">
+                <div class="carousel-caption">
+                </div>
+            </div>
+            <div class="item">
+                <img src="/img/3.jpg" alt="...">
+                <div class="carousel-caption">
+                </div>
+            </div>
+        </div>
+
+        <!-- Controls -->
+        <a class="left carousel-control" href="#carousel-example-generic" role="button" data-slide="prev">
+            <span class="glyphicon glyphicon-chevron-left" aria-hidden="true"></span>
+            <span class="sr-only">Previous</span>
+        </a>
+        <a class="right carousel-control" href="#carousel-example-generic" role="button" data-slide="next">
+            <span class="glyphicon glyphicon-chevron-right" aria-hidden="true"></span>
+            <span class="sr-only">Next</span>
+        </a>
+    </div>
+
+
+    <!--
+          视频
+    -->
+    <div class="row">
+        <div class="col-sm-6">
+            <h2>16:9 </h2>
+            <div class="embed-responsive embed-responsive-16by9">
+                <iframe class="embed-responsive-item" src="/video/1.mp4"></iframe>
+            </div>
+        </div>
+        <div class="col-sm-6">
+            <h2>4:3 </h2>
+            <div class="embed-responsive embed-responsive-4by3">
+                <iframe class="embed-responsive-item" src="/video/1.mp4"></iframe>
+            </div>
+        </div>
+    </div>
+
+    <!--
+          友情链接
+    -->
+    <div class="row" >
+        <div class="col-md-12" align="center">
+            <a href="#">baidu</a>
+            <a href="#">google</a>
+            <a href="#">lenovo</a>
+        </div>
+    </div>
+
+    <div class="row" >
+        <div class="col-md-12" align="center">
+            lenovo 版权所有Copyright&copy;2019-2020
+        </div>
+    </div>
+</div>
+
+</body>
+</html>

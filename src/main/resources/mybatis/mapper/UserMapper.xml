@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<!-- namespace="com.lenovo.tips.mapper.UserMapper" -->
+<mapper namespace="com.lenovo.tips.mapper.UserMapper">
+
+    <!--查询总记录数-->
+    <select id="queryTotal" resultType="long">
+        select count(*) from tb_user
+    </select>
+
+    <!--查询分页显示的数据-->
+    <select id="queryPageData" resultType="User">
+        select * from tb_user
+        limit #{start}, #{numPerPage}
+    </select>
+
+    <!--添加用户-->
+    <insert id="addUser">
+        insert into tb_user(id, user_name, password, name, age, sex, birthday, created, updated)
+        values(null, #{userName}, #{password}, #{name}, #{age}, #{sex}, #{birthday}, now(), now())
+    </insert>
+
+    <!--修改用户-->
+    <update id="editUser">
+        update tb_user
+        set
+            user_name=#{userName},
+            password=#{password},
+            name=#{name},
+            age=#{age},
+            sex=#{sex},
+            birthday=#{birthday},
+            updated=now()
+        where id=#{id}
+    </update>
+
+    <!--// 批量删除-->
+    <delete id="delByIds">
+        delete from tb_user
+        where id in
+                    <foreach collection="ids" item="id" open="(" close=")" separator=",">
+                        #{id}
+                    </foreach>
+    </delete>
+
+    <!--查询所用用户信息-->
+    <select id="queryAll" resultType="User">
+        select * from tb_user
+    </select>
+
+
+    <!--查询用户信息-->
+    <select id="findUserByName" resultType="User">
+        select * from tb_user where  user_name=#{username}
+    </select>
+</mapper>
