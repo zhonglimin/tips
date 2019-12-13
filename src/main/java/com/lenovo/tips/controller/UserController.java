@@ -69,4 +69,9 @@ public class UserController {
 
         return  "m11";
     }
+    @RequestMapping("m12")
+    public String  m12() {
+
+        return  "m12";
+    }
 }
